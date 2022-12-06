@@ -10,6 +10,9 @@ public:
     BST* Insert(BST*, int);
 
     void Inorder(BST*);
+    void Preorder(BST*);
+    void Postorder(BST*);
+    void Delete(BST*,int)
 };
 
 BST ::BST()
@@ -49,6 +52,32 @@ void BST ::Inorder(BST* root)
     cout << root->data << endl;
     Inorder(root->right);
 }
+void BST ::Preorder(BST* root)
+{
+    if (root == NULL) {
+        return;
+    }
+    counter++;
+    cout << root->data << endl;
+    //cout<<counter<<endl;
+    Preorder(root->left);
+    Preorder(root->right);
+}
+void BST ::Postorder(BST* root)
+{
+    if (root == NULL) {
+        return;
+    }
+    counter++;
+    Postorder(root->left);
+
+    //cout<<counter<<endl;
+    Postorder(root->right);
+    cout << root->data << endl;
+}
+void BST ::Delete(BST* root,int n){
+    
+}
 int main()
 {
     BST b, *root = NULL;
@@ -60,6 +89,6 @@ int main()
     b.Insert(root, 60);
     b.Insert(root, 80);
 
-    b.Inorder(root);
+    b.Postorder(root);
     return 0;
 }
